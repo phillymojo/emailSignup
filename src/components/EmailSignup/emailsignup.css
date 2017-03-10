@@ -1,0 +1,93 @@
+.email-signup-container {
+	max-width: 500px;
+	border: solid 1px black;
+	margin: 0 auto;
+	padding: 10px 20px;
+
+}
+
+.email-signup-container .title {
+	font-size: 18px;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+
+.email-signup-form {
+ 	
+}
+
+.input-container {
+	text-align: left;
+}
+
+.email-input-container {
+	
+}
+
+.email-input-label {
+	display: block;
+}
+
+.email-input {
+	
+}
+
+.email-input input {
+	font-size: 18px;
+	line-height: 18px;
+	padding: 10px 5px;
+	width: 100%;
+	border: solid 1px lightgrey;
+	box-sizing: border-box;
+}
+
+.gender-input-container {
+
+}
+
+.dob-input-container, .gender-input-container {
+	margin: 10px 0 0;
+	display: inline-block;
+	width: 50%;
+}
+
+.dob-dropdown {
+	display: inline-block;
+}
+
+.exp-form--radio {
+	display: inline-block;
+}
+
+.signupbutton-container {
+	margin: 10px 0 0;
+}
+
+.signupbutton-container button {
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: middle;
+	user-select: none;
+	cursor: pointer;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	border: 1px solid #ccc;
+	background-color: black;
+	color: white;
+	height: 40px;
+	line-height: 38px;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.footer-container {
+	margin: 10px 0 0;
+}
+
+.required {
+	color: red;
+}
