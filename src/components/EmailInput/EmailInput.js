@@ -10,7 +10,7 @@ class EmailInput extends React.Component {
 	      <div className="email-input">
 	          <input id="email-input--email" name="email" required="required" className="nsg-form--input text-input" data-validator="email" data-error="Please enter a valid email address." defaultValue="mbonar@gmail.com" data-has-validation="true" />
 	      </div>
-      </div>
+      </div> 
 		)
 	}
 }

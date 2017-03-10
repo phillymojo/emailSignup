@@ -1,5 +1,5 @@
 import React from 'react';
-import EmailSignupForm from './EmailSignupForm';
+import EmailSignupForm from '../EmailSignupForm';
 import $ from 'jquery';
 
 class EmailSignup extends React.Component {
@@ -14,13 +14,13 @@ class EmailSignup extends React.Component {
         let formData = this.getFormData();
 
         $.extend(formData, {
-            locale: "en_US",
+            locale: "en_US", 
             registrationSiteId: "1420e",
             emailOnly: true,
             // optIns not used for account creation, only update
             optIns: [{
                 'id': '1420',
-                'email': true
+                'email': true 
             }],
             ofRequiredAge: false,
             account: {
