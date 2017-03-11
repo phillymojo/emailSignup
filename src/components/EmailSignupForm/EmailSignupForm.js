@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import EmailInput from '../EmailInput';
 import DOBInput from '../DOBInput';
 import GenderInput from '../GenderInput';
 import PrivacyPolicy from '../PrivacyPolicy';
 import SignupButton from '../SignupButton';
 
-class EmailSignupForm extends React.Component {
+class EmailSignupForm extends Component {
 
 	render() {
 		return (
@@ -21,4 +21,9 @@ class EmailSignupForm extends React.Component {
 	}
 }
 
-export default EmailSignupForm;
+class ValidatorTest extends EmailSignupForm {
+
+
+}
+
+export default ValidatorTest;
