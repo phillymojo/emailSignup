@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EmailInput from '../EmailInput';
 import DOBInput from '../DOBInput';
 import GenderInput from '../GenderInput';
 import PrivacyPolicy from '../PrivacyPolicy';
 import SignupButton from '../SignupButton';
+import Validator from '../FormValidator';
 
-class EmailSignupForm extends Component {
+class EmailSignupForm extends Validator {
 
 	render() {
+		console.log(this.clickHandler("Email Signup Form component"));
 		return (
-			<form className="email-signup-form" data-endpoint="http://www.nike.com/profile/services/users">
-		    <input type="hidden" name="country" value="US" />
-		    <EmailInput />
-		    <DOBInput />
-		    <GenderInput />
-		    <SignupButton submitForm={this.props.submitForm} />
-		    <PrivacyPolicy />
-			</form>
+				<form className="email-signup-form" data-endpoint="http://www.nike.com/profile/services/users">
+			    <input type="hidden" name="country" value="US" />
+			    <EmailInput />
+			    <DOBInput />
+			    <GenderInput />
+			    <SignupButton submitForm={this.props.submitForm} />
+			    <PrivacyPolicy />
+					<Validator />
+				</form>
 		)
 	}
 }
 
-class ValidatorTest extends EmailSignupForm {
-
-
-}
-
-export default ValidatorTest;
+export default EmailSignupForm;

@@ -1,0 +1,25 @@
+
+.signupbutton-container {
+	margin: 10px 0 0;
+}
+
+.signupbutton-container button {
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: middle;
+	user-select: none;
+	cursor: pointer;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	border: 1px solid #ccc;
+	background-color: black;
+	color: white;
+	height: 40px;
+	line-height: 38px;
+	white-space: nowrap;
+	width: 100%;
+}

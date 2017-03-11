@@ -1,0 +1,10 @@
+
+.dob-input-container, .gender-input-container {
+	margin: 10px 0 0;
+	display: inline-block;
+	width: 50%;
+}
+
+.dob-dropdown {
+	display: inline-block;
+}

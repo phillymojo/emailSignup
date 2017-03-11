@@ -1,0 +1,21 @@
+
+.email-input-container {
+	
+}
+
+.email-input-label {
+	display: block;
+}
+
+.email-input {
+	
+}
+
+.email-input input {
+	font-size: 18px;
+	line-height: 18px;
+	padding: 10px 5px;
+	width: 100%;
+	border: solid 1px lightgrey;
+	box-sizing: border-box;
+}

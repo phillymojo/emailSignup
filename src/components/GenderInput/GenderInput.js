@@ -7,7 +7,7 @@ class GenderInput extends React.Component
         return (
             <div className="input-container gender-input-container">
 	            <label className="register-label exp-global-label">
-	                Gender<b className="nsg-form--required">*</b>
+	                Gender <b className="required">*</b>
 	            </label>
 	            <div className="field gender exp-input-wrapper">
 	                <div className="exp-form--radio">

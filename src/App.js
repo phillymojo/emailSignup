@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import EmailSignup from './components/EmailSignup';
+import EmailSignupContainer from './components/EmailSignupContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <EmailSignup />
+        <EmailSignupContainer />
       </div>
     );
   }

@@ -1,0 +1,21 @@
+.email-signup-container {
+	max-width: 500px;
+	border: solid 1px black;
+	margin: 0 auto;
+	padding: 10px 20px;
+
+}
+
+.email-signup-container .title {
+	font-size: 18px;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+
+.input-container {
+	text-align: left;
+}
+
+.required {
+	color: red;
+}
