@@ -2,3 +2,7 @@
 .email-signup-form {
  	
 }
+
+.required {
+	color: red;
+}

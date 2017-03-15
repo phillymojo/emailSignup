@@ -8,20 +8,32 @@ import PrivacyPolicy from '../PrivacyPolicy';
 import SignupButton from '../SignupButton';
 import FormValidator from '../FormValidator';
 
-class EmailSignupForm extends FormValidator {
+class EmailSignupForm extends React.Component {
 
 	constructor() {
 		super();
 
 		this.submitForm = this.submitForm.bind(this);
+		this.validateForm = this.validateForm.bind(this);
 	}
 
-	checkForValidation() {
+	getRequiredInputs() {		
+		return Object.keys(this.refs)
+			.filter((key) => {return this.refs[key].props.required === true})
+			.map((keyname) => {return this.refs[keyname]});
+	}
 
+	validateForm(){
+		var requiredInputs = this.getRequiredInputs();
+
+		console.log(requiredInputs);
 	}
 
 	submitForm(e) {
 		e.preventDefault();
+
+		this.validateForm();
+		
 		let formData = this.getFormData();
 
 		$.extend(formData, {
@@ -100,17 +112,20 @@ class EmailSignupForm extends FormValidator {
 		return data;
 	}
 
+	componentDidMount() {		
+		console.log(this._validator.clickHandler("Email Signup Form component"));
+	}
+
 	render() {
-		console.log(this.clickHandler("Email Signup Form component"));
 		return (
 			<form className="email-signup-form" data-endpoint="http://www.nike.com/profile/services/users">
 				<input type="hidden" name="country" value="US" />
-				<EmailInput />
-				<DOBInput />
-				<GenderInput />
-				<SignupButton submitForm={this.submitForm} />
+				<EmailInput ref={'emailinput'} required={true} langlocale={this.props.langlocale} />
+				<DOBInput ref={'dobinput'} required={true} langlocale={this.props.langlocale} />
+				<GenderInput ref={'genderinput'} required={true} langlocale={this.props.langlocale} />
+				<SignupButton submitForm={this.submitForm} ref={'signupbutton'} />
 				<PrivacyPolicy />
-				<FormValidator />
+				<FormValidator ref={ (validator) => this._validator = validator }/>
 			</form>
 		)
 	}

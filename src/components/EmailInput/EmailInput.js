@@ -1,6 +1,10 @@
 import React from 'react';
 
 class EmailInput extends React.Component {
+	validateMe() {
+		
+	}
+
 	render() {
 		return (
 			<div className="input-container email-input-container">
