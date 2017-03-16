@@ -13,26 +13,35 @@ class EmailSignupForm extends React.Component {
 	constructor() {
 		super();
 
+		this.state = {
+			requiredInputs: [],
+			formIsValid: false
+		}
+
 		this.submitForm = this.submitForm.bind(this);
 		this.validateForm = this.validateForm.bind(this);
+		this.setInputState = this.setInputState.bind(this);
 	}
 
-	getRequiredInputs() {		
-		return Object.keys(this.refs)
-			.filter((key) => {return this.refs[key].props.required === true})
-			.map((keyname) => {return this.refs[keyname]});
+	setInputState(inputObj, validState) {
+		let updatedInputs = this.state.requiredInputs.map((input) => {
+			if(input.input === inputObj) {
+				input.valid = validState;
+			}
+			return input;
+		});
+		this.setState({requiredInputs: updatedInputs});
+
 	}
 
 	validateForm(){
-		var requiredInputs = this.getRequiredInputs();
-
-		console.log(requiredInputs);
+		return true;
 	}
 
 	submitForm(e) {
 		e.preventDefault();
 
-		this.validateForm();
+		if (!this.validateForm()) return false;
 		
 		let formData = this.getFormData();
 
@@ -112,18 +121,55 @@ class EmailSignupForm extends React.Component {
 		return data;
 	}
 
-	componentDidMount() {		
-		console.log(this._validator.clickHandler("Email Signup Form component"));
+	/**
+	 * 
+	 * @params array inputs A list of the input components that are required
+	 */
+	registerRequiredInputs() {
+		const requiredInputs = Object.keys(this.refs)
+			.filter((key) => {return this.refs[key].props.required === true})
+			.map((keyname) => {return this.refs[keyname]});
+		const inputlist = requiredInputs.map((input) => {
+			return ({input: input, valid: false})
+		});
+		
+		this.setState({
+			requiredInputs: inputlist
+		});		
+	}
+
+	componentDidMount() {
+		//register the required input components
+		this.registerRequiredInputs();
 	}
 
 	render() {
 		return (
 			<form className="email-signup-form" data-endpoint="http://www.nike.com/profile/services/users">
 				<input type="hidden" name="country" value="US" />
-				<EmailInput ref={'emailinput'} required={true} langlocale={this.props.langlocale} />
-				<DOBInput ref={'dobinput'} required={true} langlocale={this.props.langlocale} />
-				<GenderInput ref={'genderinput'} required={true} langlocale={this.props.langlocale} />
-				<SignupButton submitForm={this.submitForm} ref={'signupbutton'} />
+				<EmailInput 
+					ref={'emailinput'} 
+					required={true} 
+					setInputState={this.setInputState} 
+					langlocale={this.props.langlocale} 
+				/>
+				<DOBInput 
+					ref={'dobinput'} 
+					required={true} 
+					setInputState={this.setInputState} 
+					langlocale={this.props.langlocale} 
+				/>
+				<GenderInput 
+					ref={'genderinput'} 
+					required={true} 
+					setInputState={this.setInputState} 
+					langlocale={this.props.langlocale} 
+				/>
+				<SignupButton 
+					activateButton={this.state.formIsValid} 
+					submitForm={this.submitForm} 
+					ref={'signupbutton'} 
+				/>
 				<PrivacyPolicy />
 				<FormValidator ref={ (validator) => this._validator = validator }/>
 			</form>

@@ -1,9 +1,20 @@
 import React from 'react';
 
 class EmailInput extends React.Component {
+	constructor(props){
+		super(props);
+
+		this.validateMe = this.validateMe.bind(this);
+	}
+
 	validateMe(e) {
 		e.preventDefault();
-		console.log(e.target.value)
+		let validState = false;
+
+		if(e.target.value.length) {
+			validState = true;
+		}
+		this.props.setInputState(this, validState);
 	}
 
 	render() {

@@ -7,7 +7,7 @@ class EmailSignupContainer extends React.Component {
         return (
             <div className="email-signup-container">
                 <div className="title">Get News and Offers from Nike</div>
-                <EmailSignupForm langlocale="en_us" />
+                <EmailSignupForm locale="en_us" country="us" />
             </div>
         )
     }

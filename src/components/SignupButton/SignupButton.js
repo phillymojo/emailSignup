@@ -2,9 +2,11 @@ import React from 'react';
 
 class SignupButton extends React.Component {
 	render () {
+		const activeButton = <button type="submit" onClick={this.props.submitForm} className="active">Sign Up</button>;
+		const disabledButton = <button className="disabled" disabled>Sign Up</button>;
 		return (
 			<div className="signupbutton-container">
-				<button type="submit" className="button-medium nsg-button nsg-grad--nike-orange email-button" onClick={this.props.submitForm}> SIGN UP </button>
+				{this.props.activateButton ? activeButton : disabledButton }
 			</div>
 		)
 	}
