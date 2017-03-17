@@ -23,6 +23,11 @@ class EmailSignupForm extends React.Component {
 		this.setInputState = this.setInputState.bind(this);
 	}
 
+	/**
+	 * 
+	 * @param obj inputObj The React component that made this call
+	 * @param bool validState If the React component is in a valid state
+	 */
 	setInputState(inputObj, validState) {
 		let updatedInputs = this.state.requiredInputs.map((input) => {
 			if(input.input === inputObj) {
@@ -31,7 +36,6 @@ class EmailSignupForm extends React.Component {
 			return input;
 		});
 		this.setState({requiredInputs: updatedInputs});
-
 	}
 
 	validateForm(){
@@ -123,7 +127,6 @@ class EmailSignupForm extends React.Component {
 
 	/**
 	 * 
-	 * @params array inputs A list of the input components that are required
 	 */
 	registerRequiredInputs() {
 		const requiredInputs = Object.keys(this.refs)

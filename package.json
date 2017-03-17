@@ -59,7 +59,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "test-coverage": "node scripts/test.js --env=jsdom --coverage --verbose",
-    "jest": "jest --coverage --verbose",
+    "jest": "jest --coverage --verbose --env=jsdom",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
