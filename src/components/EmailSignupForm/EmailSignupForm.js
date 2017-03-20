@@ -6,46 +6,43 @@ import DOBInput from '../DOBInput';
 import GenderInput from '../GenderInput';
 import PrivacyPolicy from '../PrivacyPolicy';
 import SignupButton from '../SignupButton';
-import FormValidator from '../FormValidator';
 
 class EmailSignupForm extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
-		this.state = {
-			requiredInputs: [],
-			formIsValid: false
-		}
+		// this.state = {
+		// 	requiredInputs: [],
+		// 	formIsValid: false
+		// }
 
-		this.submitForm = this.submitForm.bind(this);
-		this.validateForm = this.validateForm.bind(this);
-		this.setInputState = this.setInputState.bind(this);
+		// this.submitForm = this.submitForm.bind(this);
+		// this.validateForm = this.validateForm.bind(this);
+		// this.registerRequiredInputs = this.registerRequiredInputs.bind(this);
+		// this.setInputState = this.setInputState.bind(this);
 	}
 
-	/**
-	 * 
-	 * @param obj inputObj The React component that made this call
-	 * @param bool validState If the React component is in a valid state
-	 */
-	setInputState(inputObj, validState) {
-		let updatedInputs = this.state.requiredInputs.map((input) => {
-			if(input.input === inputObj) {
-				input.valid = validState;
-			}
-			return input;
-		});
-		this.setState({requiredInputs: updatedInputs});
-	}
-
-	validateForm(){
-		return true;
-	}
+	// /**
+	//  * Method to allow children to report their validation state
+	//  * 
+	//  * @param obj inputObj The React component that made this call
+	//  * @param bool validState If the React component is in a valid state
+	//  */
+	// setInputState(inputObj, validState) {
+	// 	let updatedInputs = this.state.requiredInputs.map((input) => {
+	// 		if(input.input === inputObj) {
+	// 			input.valid = validState;
+	// 		}
+	// 		return input;
+	// 	});
+	// 	this.setState({requiredInputs: updatedInputs});
+	// }
 
 	submitForm(e) {
 		e.preventDefault();
 
-		if (!this.validateForm()) return false;
+		if (!this.props.formIsValid) return false;
 		
 		let formData = this.getFormData();
 
@@ -125,25 +122,26 @@ class EmailSignupForm extends React.Component {
 		return data;
 	}
 
-	/**
-	 * 
-	 */
-	registerRequiredInputs() {
-		const requiredInputs = Object.keys(this.refs)
-			.filter((key) => {return this.refs[key].props.required === true})
-			.map((keyname) => {return this.refs[keyname]});
-		const inputlist = requiredInputs.map((input) => {
-			return ({input: input, valid: false})
-		});
+	// /**
+	//  * Create an array of components that have been implemented with required set to TRUE
+	//  * 
+	//  */
+	// registerRequiredInputs() {
+	// 	const requiredInputs = Object.keys(this.refs)
+	// 		.filter((key) => {return this.refs[key].props.required === true})
+	// 		.map((keyname) => {return this.refs[keyname]});
+	// 	const inputlist = requiredInputs.map((input) => {
+	// 		return ({input: input, valid: false})
+	// 	});
 		
-		this.setState({
-			requiredInputs: inputlist
-		});		
-	}
+	// 	this.setState({
+	// 		requiredInputs: inputlist
+	// 	});		
+	// }
 
 	componentDidMount() {
 		//register the required input components
-		this.registerRequiredInputs();
+		this.props.registerRequiredInputs(this.refs);
 	}
 
 	render() {
@@ -169,12 +167,11 @@ class EmailSignupForm extends React.Component {
 					langlocale={this.props.langlocale} 
 				/>
 				<SignupButton 
-					activateButton={this.state.formIsValid} 
+					activateButton={this.props.formIsValid} 
 					submitForm={this.submitForm} 
 					ref={'signupbutton'} 
 				/>
 				<PrivacyPolicy />
-				<FormValidator ref={ (validator) => this._validator = validator }/>
 			</form>
 		)
 	}

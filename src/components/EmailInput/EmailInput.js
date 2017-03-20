@@ -11,9 +11,12 @@ class EmailInput extends React.Component {
 		e.preventDefault();
 		let validState = false;
 
+		//TODO: need to define a regex that will control wether the string is a valid email address.
+		//for bootstraping, this currently just looks at the length... 
 		if(e.target.value.length) {
 			validState = true;
 		}
+		
 		this.props.setInputState(this, validState);
 	}
 

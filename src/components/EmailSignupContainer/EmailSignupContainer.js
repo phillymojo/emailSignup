@@ -1,5 +1,8 @@
 import React from 'react';
 import EmailSignupForm from '../EmailSignupForm';
+import FormValidator from '../FormValidatorHOC/FormValidatorHOC';
+
+const WrappedEmailSignupForm = FormValidator(EmailSignupForm);
 
 class EmailSignupContainer extends React.Component {
 
@@ -7,7 +10,7 @@ class EmailSignupContainer extends React.Component {
         return (
             <div className="email-signup-container">
                 <div className="title">Get News and Offers from Nike</div>
-                <EmailSignupForm locale="en_us" country="us" />
+                <WrappedEmailSignupForm />
             </div>
         )
     }
