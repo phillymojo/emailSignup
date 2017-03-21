@@ -7,6 +7,7 @@ export default function FormValidatorHOC (WrappedFormComponent) {
 			super(props);
 
 			this.registerRequiredInputs = this.registerRequiredInputs.bind(this);
+			this.setInputState = this.setInputState.bind(this);
 
 			this.state = {
 				requiredInputs: [],
@@ -15,7 +16,7 @@ export default function FormValidatorHOC (WrappedFormComponent) {
 		}
 
 		/**
-		 * Method to allow children to report their validation state
+		 * Method to allow child inputs to report their validation state
 		 * 
 		 * @param obj inputObj The React component that made this call
 		 * @param bool validState If the React component is in a valid state
@@ -28,12 +29,24 @@ export default function FormValidatorHOC (WrappedFormComponent) {
 				return input;
 			});
 			this.setState({ requiredInputs: updatedInputs });
+			this.checkIfFormIsValid();
+		}
+
+		/**
+		 * This check will determine if the Form is valid by
+		 * looping over the requiredInputs and checking for their valid state
+		 */
+		checkIfFormIsValid() {			
+			if(this.state.requiredInputs.every((input) => {return input.valid})) {
+				this.setState({formIsValid: true})
+			}
 		}
 
 		/**
 		 * Create an array of components that have been implemented with required set to TRUE
 		 * this will be used for checkIfFormIsValid
 		 * 
+		 * @param object refs Map of the components in the form that have a ref value
 		 */
 		registerRequiredInputs(refs) {
 			const requiredInputs = Object.keys(refs)
@@ -45,18 +58,6 @@ export default function FormValidatorHOC (WrappedFormComponent) {
 			this.setState({
 				requiredInputs: inputlist
 			});
-		}
-
-		checkIfFormIsValid() {
-			//run this check every time that an input state is changed.
-			//if all inputs in the requiredInputs array are valid, then set formIsValid to true
-			//TODO: yea, let's add this code...
-
-		}
-
-		componentDidMount() {
-			//register the required input components
-			// this.registerRequiredInputs();
 		}
 
 		render() {

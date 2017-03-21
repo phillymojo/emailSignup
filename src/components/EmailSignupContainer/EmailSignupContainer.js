@@ -1,8 +1,8 @@
 import React from 'react';
 import EmailSignupForm from '../EmailSignupForm';
-import FormValidator from '../FormValidatorHOC/FormValidatorHOC';
+import FormValidatorHOC from '../FormValidatorHOC/FormValidatorHOC';
 
-const WrappedEmailSignupForm = FormValidator(EmailSignupForm);
+const WrappedEmailSignupForm = FormValidatorHOC(EmailSignupForm);
 
 class EmailSignupContainer extends React.Component {
 

@@ -12,38 +12,15 @@ class EmailSignupForm extends React.Component {
 	constructor(props) {
 		super(props);
 
-		// this.state = {
-		// 	requiredInputs: [],
-		// 	formIsValid: false
-		// }
-
-		// this.submitForm = this.submitForm.bind(this);
-		// this.validateForm = this.validateForm.bind(this);
-		// this.registerRequiredInputs = this.registerRequiredInputs.bind(this);
-		// this.setInputState = this.setInputState.bind(this);
+		this.submitForm = this.submitForm.bind(this);
+		this.getFormData = this.getFormData.bind(this);
 	}
-
-	// /**
-	//  * Method to allow children to report their validation state
-	//  * 
-	//  * @param obj inputObj The React component that made this call
-	//  * @param bool validState If the React component is in a valid state
-	//  */
-	// setInputState(inputObj, validState) {
-	// 	let updatedInputs = this.state.requiredInputs.map((input) => {
-	// 		if(input.input === inputObj) {
-	// 			input.valid = validState;
-	// 		}
-	// 		return input;
-	// 	});
-	// 	this.setState({requiredInputs: updatedInputs});
-	// }
 
 	submitForm(e) {
 		e.preventDefault();
 
 		if (!this.props.formIsValid) return false;
-		
+
 		let formData = this.getFormData();
 
 		$.extend(formData, {
@@ -122,23 +99,6 @@ class EmailSignupForm extends React.Component {
 		return data;
 	}
 
-	// /**
-	//  * Create an array of components that have been implemented with required set to TRUE
-	//  * 
-	//  */
-	// registerRequiredInputs() {
-	// 	const requiredInputs = Object.keys(this.refs)
-	// 		.filter((key) => {return this.refs[key].props.required === true})
-	// 		.map((keyname) => {return this.refs[keyname]});
-	// 	const inputlist = requiredInputs.map((input) => {
-	// 		return ({input: input, valid: false})
-	// 	});
-		
-	// 	this.setState({
-	// 		requiredInputs: inputlist
-	// 	});		
-	// }
-
 	componentDidMount() {
 		//register the required input components
 		this.props.registerRequiredInputs(this.refs);
@@ -148,28 +108,28 @@ class EmailSignupForm extends React.Component {
 		return (
 			<form className="email-signup-form" data-endpoint="http://www.nike.com/profile/services/users">
 				<input type="hidden" name="country" value="US" />
-				<EmailInput 
-					ref={'emailinput'} 
-					required={true} 
-					setInputState={this.setInputState} 
-					langlocale={this.props.langlocale} 
+				<EmailInput
+					ref={'emailinput'}
+					required={true}
+					setInputState={this.props.setInputState}
+					langlocale={this.props.langlocale}
 				/>
-				<DOBInput 
-					ref={'dobinput'} 
-					required={true} 
-					setInputState={this.setInputState} 
-					langlocale={this.props.langlocale} 
+				<DOBInput
+					ref={'dobinput'}
+					required={true}
+					setInputState={this.setInputState}
+					langlocale={this.props.langlocale}
 				/>
-				<GenderInput 
-					ref={'genderinput'} 
-					required={true} 
-					setInputState={this.setInputState} 
-					langlocale={this.props.langlocale} 
+				<GenderInput
+					ref={'genderinput'}
+					required={true}
+					setInputState={this.setInputState}
+					langlocale={this.props.langlocale}
 				/>
-				<SignupButton 
-					activateButton={this.props.formIsValid} 
-					submitForm={this.submitForm} 
-					ref={'signupbutton'} 
+				<SignupButton
+					activateButton={this.props.formIsValid}
+					submitForm={this.submitForm}
+					ref={'signupbutton'}
 				/>
 				<PrivacyPolicy />
 			</form>

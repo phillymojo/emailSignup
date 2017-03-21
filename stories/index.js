@@ -14,7 +14,7 @@ storiesOf('EmailSignup', module)
     <EmailSignupContainer />
   ))
   .add('Email Signup Form', () => (
-    <EmailSignupForm />
+    <EmailSignupForm registerRequiredInputs={() => false} />
   ))
   .add('Email Input', () => (
     <EmailInput />
