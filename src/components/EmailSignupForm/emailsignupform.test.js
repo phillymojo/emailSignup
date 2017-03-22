@@ -15,6 +15,5 @@ describe('<EmailSignupForm />', () => {
     expect(form.find('GenderInput').length).toEqual(1);
     expect(form.find('SignupButton').length).toEqual(1);
     expect(form.find('PrivacyPolicy').length).toEqual(1);
-    expect(form.find('FormValidator').length).toEqual(1);
   });
 });

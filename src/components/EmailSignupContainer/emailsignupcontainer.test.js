@@ -1,12 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import EmailSignupContainer from './EmailSignupContainer';
 
 describe('<EmailSignupContainer />', () => {
   let container;
 
   beforeEach(() => {
-    container = shallow(<EmailSignupContainer />);
+    container = mount(<EmailSignupContainer />);
   });
 
   it('EmailSignupContainer renders its nested componentst', () => {

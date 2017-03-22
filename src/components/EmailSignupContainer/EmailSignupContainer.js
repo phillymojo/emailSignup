@@ -1,6 +1,6 @@
 import React from 'react';
 import EmailSignupForm from '../EmailSignupForm';
-import FormValidatorHOC from '../FormValidatorHOC/FormValidatorHOC';
+import FormValidatorHOC from '../FormValidatorHOC';
 
 const WrappedEmailSignupForm = FormValidatorHOC(EmailSignupForm);
 
