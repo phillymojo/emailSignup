@@ -38,7 +38,9 @@ export default function FormValidatorHOC (WrappedFormComponent) {
 		 */
 		checkIfFormIsValid() {			
 			if(this.state.requiredInputs.every((input) => {return input.valid})) {
-				this.setState({formIsValid: true})
+				this.setState({formIsValid: true});
+			} else {
+				this.setState({formIsValid: false});
 			}
 		}
 
@@ -67,7 +69,7 @@ export default function FormValidatorHOC (WrappedFormComponent) {
 				checkIfFormIsValid: this.checkIfFormIsValid,
 				formIsValid: this.state.formIsValid
 			}
-			return <WrappedFormComponent {...this.props} {...newProps} />;
+			return (<WrappedFormComponent {...this.props} {...newProps} />);
 		}
 	}
 }
